@@ -44,8 +44,8 @@ var webSchema = new mongoose.Schema({
 // set Variabel web untuk menggunakan schema yang dibuat
 var Web = mongoose.model("Web", webSchema);
 
-// app.engine("html", require("ejs").renderFile)
-//app.set("view engine","html")s
+app.engine("html", require("ejs").renderFile)
+app.set("view engine","html")
 // Routing root (diawal)
 app.get("/", function(req,res){
     res.redirect("/webs");
