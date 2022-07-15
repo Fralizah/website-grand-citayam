@@ -58,7 +58,7 @@ app.get("/webs", function(req,res){
             })
         } else {
             console.log(webs)
-            res.render("index", {"webs":webs})
+            res.render("index")
         }
     });
 });
