@@ -57,7 +57,7 @@ app.get("/webs", function(req,res){
         if(err){
             console.log("ERROR!");
         } else {
-            res.render("public/index.html", {webs:webs});
+            res.render("/public/index.html", {webs:webs});
         }
     });
 });
