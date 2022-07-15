@@ -53,10 +53,11 @@ app.get("/", function(req,res){
 app.get("/webs", function(req,res){
     Web.find({}, function(err, webs){
         if(err){
-            console.log("ERROR!");
+            res.json({
+                error: err
+            })
         } else {
-            console.log(webs)
-            res.render("index");
+            res.json({webs:webs});
         }
     });
 });
