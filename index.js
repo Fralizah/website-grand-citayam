@@ -26,7 +26,7 @@ mongoose.connection.on("connected",()=>{
     console.log(`${database} terkoneksi`)
 })
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 // set db sebagai variabel database
 var db = mongoose.connection;
 // JIka db error akan dilempar pesan ke console
