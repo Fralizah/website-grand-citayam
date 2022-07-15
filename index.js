@@ -14,19 +14,7 @@ app.use(express.static('public'))
 
 app.use(bodyParser.urlencoded({extended:true}))
 
-
-
-//cloud-real-estate
-//nEHpUAu6FS1Nt9TK
-
-//connect to mongo atlas
-const database = process.env.MONGOURI || 'mongodb+srv://cloud-real-estate:nEHpUAu6FS1Nt9TK@cloud-real-estate.og9th.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(database);
-mongoose.connection.on("connected",()=>{
-    console.log(`${database} terkoneksi`)
-})
-
-const port = process.env.PORT || 3000;
+mongoose.connect('mongodb://localhost:27017/mydb');
 // set db sebagai variabel database
 var db = mongoose.connection;
 // JIka db error akan dilempar pesan ke console
@@ -44,8 +32,6 @@ var webSchema = new mongoose.Schema({
 // set Variabel web untuk menggunakan schema yang dibuat
 var Web = mongoose.model("Web", webSchema);
 
-app.engine("html", require("ejs").renderFile)
-app.set("view engine","html")
 // Routing root (diawal)
 app.get("/", function(req,res){
     res.redirect("/webs");
@@ -57,7 +43,7 @@ app.get("/webs", function(req,res){
         if(err){
             console.log("ERROR!");
         } else {
-            res.render("/public/index.html", {webs:webs});
+            res.render("index", {webs:webs});
         }
     });
 });
@@ -88,6 +74,6 @@ app.post("/webs", function(req, res){
     return res.redirect('/')
 });
 
-app.listen(port, () =>{
-    console.log(`server berjalan pada port ${port}`);
-});
+app.listen(3000, function(){
+    console.log("Listen on port 3000");
+})
